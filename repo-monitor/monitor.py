@@ -60,10 +60,10 @@ def send_email(subject: str, body: str) -> None:
 def main():
     cfg = load_config("config.yaml")
 
-    owner = cfg["owner"]
-    repo_name = cfg["repo"]
-    task_name = cfg["task_name"]
-    expected_students = cfg["expected_students"]
+ owner = cfg.get("owner") or cfg.get("owner ")
+repo_name = cfg.get("repo") or cfg.get("repo_name")
+task_name = cfg.get("task_id") or cfg.get("task_name")
+expected_students = cfg.get("students") or cfg.get("expected_students")
 
     url = f"https://api.github.com/repos/{owner}/{repo_name}/branches"
 
